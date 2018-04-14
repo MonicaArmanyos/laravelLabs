@@ -28,7 +28,8 @@ class StorePostRequest extends FormRequest
         return [
 
             'title' => 'required|min:3|unique:posts,title',
-            'description' => 'required|min:10'
+            'description' => 'required|min:10',
+            'user_id'=>'exists:users,id'
            
         ];
     }
@@ -39,7 +40,8 @@ class StorePostRequest extends FormRequest
         'description.required'  => 'A Description is required',
         'title.min' =>'title must have at least 3 characters',
         'description.min'=>'description must have at least 10 characters ',
-        'description.unique'=>'This description has already been taken.'
+        'description.unique'=>'This description has already been taken.',
+        'user_id.exists'=>'Someone tried to attack '
     ];
 }
 
