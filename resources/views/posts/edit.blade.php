@@ -3,8 +3,10 @@
 
 @section('content')
 <div class="container-fluid">
-<form method="put" action="{{route('posts.update',['post'=>$post->id])}}">
+<form method="POST" action="{{route('posts.update',['post'=>$post->id])}}">
+{{ method_field('PUT') }}
 {{csrf_field()}}
+
 Title :- <input class="form-control" type="text" name="title" value="{{$post->title}}">
 <br><br>
 Description :- 

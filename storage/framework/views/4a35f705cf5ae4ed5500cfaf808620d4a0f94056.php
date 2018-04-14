@@ -34,11 +34,38 @@
 <td><?php echo e($post->created_at); ?></td>
 <td> <button type="button" class="btn btn-success" onclick="location.href='<?php echo e(route('posts.show',['post' =>$post->id])); ?>'">View</button>
     <button type="button" class="btn btn-primary" onclick="location.href='<?php echo e(route('posts.edit',['post' =>$post->id])); ?>'">Edit</button>
-    <button type="button" class="btn btn-danger">Delete</button>
+    <button type="button" class="btn btn-danger delete"  targ="<?php echo e($post->id); ?>" >Delete</button>
 </td>
 <?php endforeach; $__env->popLoop(); $loop = $__env->getLastLoop(); ?>
   </tbody>
 </table>
 
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/jquery-confirm/3.3.0/jquery-confirm.min.css">
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-confirm/3.3.0/jquery-confirm.min.js"></script>
+<script src="<?php echo e(asset('js/warn.js')); ?>"></script>
+<script>
+  $(".delete").on('click',function(){
+  var my = this;
+    var con = confirm("are you sure");
+    if(con){
+        $.ajax(
+          {
+            url: "posts/"+$(my).attr("targ") , 
+            type: 'DELETE',
+            data : {'_token' : '<?php echo e(csrf_token()); ?>'},
+            success : function (res) {
+              console.log(res);
+               location.reload(); 
+            },
+            error : function(err){
+              console.log(err)
+            }
+          }
+        );
+    }
+  });
+
+
+</script>
 <?php $__env->stopSection(); ?>
 <?php echo $__env->make('layouts.master', array_except(get_defined_vars(), array('__data', '__path')))->render(); ?>

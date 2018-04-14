@@ -54,10 +54,18 @@ class PostsController extends Controller
     }
     public function update($id,Request $request)
     {
-        dd($request->all());
         $post_edit=Post::findOrFail($id);
-        Post::update();
-        //return redirect(route('posts.index')); 
+        $post=Post::where('id', $id);
+        $post->update(['title' => $request->title,
+        'description' => $request->description,
+        'user_id' => $request->user_id]);
+        return redirect(route('posts.index')); 
+    }
+    public function destroy($id)
+    {
+        //dd($id);
+        Post::find($id)->delete();
+        return ["status"=>"true"];
     }
 
 }
