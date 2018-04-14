@@ -5,7 +5,7 @@ namespace App\Http\Controllers;
 use App\Post;
 use Illuminate\Http\Request;
 use App\User;
-
+use App\Http\Requests\StorePostRequest;
 
 class PostsController extends Controller
 {
@@ -29,7 +29,7 @@ class PostsController extends Controller
         ]);
     }
 
-    public function store(Request $request)
+    public function store(StorePostRequest $request)
     {
         // dd($request->all());
         Post::create([
@@ -37,6 +37,7 @@ class PostsController extends Controller
             'description' => $request->description,
             'user_id' => $request->user_id
         ]);
+        $validated = $request-> validated();
         
        return redirect(route('posts.index')); 
     }
@@ -52,13 +53,14 @@ class PostsController extends Controller
         $post_edit=Post::findOrFail($id);//
         return view('posts.edit',['post' => $post_edit,'users'=>$users]);
     }
-    public function update($id,Request $request)
+    public function update($id,StorePostRequest $request)
     {
         $post_edit=Post::findOrFail($id);
         $post=Post::where('id', $id);
         $post->update(['title' => $request->title,
         'description' => $request->description,
         'user_id' => $request->user_id]);
+        $validated = $request-> validated($request->user_id);
         return redirect(route('posts.index')); 
     }
     public function destroy($id)
