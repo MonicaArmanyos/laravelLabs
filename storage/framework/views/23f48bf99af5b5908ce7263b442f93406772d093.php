@@ -1,12 +1,12 @@
 <?php $__env->startSection('content'); ?>
-
+<div class="container-fluid">
 <form method="post" action="/posts">
 <?php echo e(csrf_field()); ?>
 
-Title :- <input type="text" name="title">
+Title :- <input class="form-control" type="text" name="title">
 <br><br>
 Description :- 
-<textarea name="description"></textarea>
+<textarea class="form-control" name="description"></textarea>
 <br>
 <br>
 Post Creator
@@ -17,8 +17,10 @@ Post Creator
 
 </select>
 <br>
-<input type="submit" value="Submit" class="btn btn-primary">
+<input type="submit" value="Create" class="btn btn-success">
 </form>
+
+</div>
 
 <?php $__env->stopSection(); ?>
 <?php echo $__env->make('layouts.master', array_except(get_defined_vars(), array('__data', '__path')))->render(); ?>

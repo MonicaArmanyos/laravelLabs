@@ -24,4 +24,6 @@ Route::get(
 //lw 3ozt a8ayar el path ha8ar el path mn hna bs fda ashal ma kont hlf fel project a8ayar f kol 7ta 
 Route::get('posts/create','PostsController@create')->name('posts.create');
 Route::post('posts','PostsController@store')->name('posts.store');
-Route::get('posts/{post}','PostsController@show')->name('posts.show');//{post} da id 
+Route::get('posts/{post}','PostsController@show')->name('posts.show');//{post} da id aw esm
+Route::get('posts/{post}/edit','PostsController@edit')->name('posts.edit');
+Route::put('posts/{post}','PostsController@update')->name('posts.update');

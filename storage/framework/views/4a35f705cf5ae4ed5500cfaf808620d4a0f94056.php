@@ -10,7 +10,7 @@
 <?php endforeach; $__env->popLoop(); $loop = $__env->getLastLoop(); ?>
 --->
 <div class="col-md-12 text-center">
-    <button type="button" class="btn btn-primary" onclick="location.href='posts/create'">Create Post</button>
+    <button type="button" class="btn btn-primary" onclick="location.href='<?php echo e(route('posts.create')); ?>'">Create Post</button>
 </div>
 <br/>
 <table class="table">
@@ -33,7 +33,7 @@
 <td><?php echo e($post->user->name); ?></td>
 <td><?php echo e($post->created_at); ?></td>
 <td> <button type="button" class="btn btn-success" onclick="location.href='<?php echo e(route('posts.show',['post' =>$post->id])); ?>'">View</button>
-    <button type="button" class="btn btn-primary" >Edit</button>
+    <button type="button" class="btn btn-primary" onclick="location.href='<?php echo e(route('posts.edit',['post' =>$post->id])); ?>'">Edit</button>
     <button type="button" class="btn btn-danger">Delete</button>
 </td>
 <?php endforeach; $__env->popLoop(); $loop = $__env->getLastLoop(); ?>

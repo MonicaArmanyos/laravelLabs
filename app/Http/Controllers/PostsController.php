@@ -6,6 +6,7 @@ use App\Post;
 use Illuminate\Http\Request;
 use App\User;
 
+
 class PostsController extends Controller
 {
     public function index()
@@ -42,6 +43,21 @@ class PostsController extends Controller
     public function show($id)   
     {
         $post=Post::findOrFail($id);
+        
         return view('posts.show',['post' => $post]);
     }
+    public function edit($id)
+    {
+        $users = User::all();
+        $post_edit=Post::findOrFail($id);//
+        return view('posts.edit',['post' => $post_edit,'users'=>$users]);
+    }
+    public function update($id,Request $request)
+    {
+        dd($request->all());
+        $post_edit=Post::findOrFail($id);
+        Post::update();
+        //return redirect(route('posts.index')); 
+    }
+
 }

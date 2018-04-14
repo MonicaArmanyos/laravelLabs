@@ -2,13 +2,13 @@
 
 
 @section('content')
-
+<div class="container-fluid">
 <form method="post" action="/posts">
 {{csrf_field()}}
-Title :- <input type="text" name="title">
+Title :- <input class="form-control" type="text" name="title">
 <br><br>
 Description :- 
-<textarea name="description"></textarea>
+<textarea class="form-control" name="description"></textarea>
 <br>
 <br>
 Post Creator
@@ -19,7 +19,9 @@ Post Creator
 
 </select>
 <br>
-<input type="submit" value="Submit" class="btn btn-primary">
+<input type="submit" value="Create" class="btn btn-success">
 </form>
+
+</div>
 
 @endsection
