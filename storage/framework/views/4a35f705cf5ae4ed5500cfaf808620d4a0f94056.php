@@ -21,6 +21,7 @@
       <th scope="col">Posted by</th>
       <th scope="col">Created at</th>
       <th scope="col">Actions</th>
+      <th scope="col">Slug</th>
     </tr>
   </thead>
   <tbody>
@@ -36,6 +37,7 @@
     <button type="button" class="btn btn-primary" onclick="location.href='<?php echo e(route('posts.edit',['post' =>$post->id])); ?>'">Edit</button>
     <button type="button" class="btn btn-danger delete"  targ="<?php echo e($post->id); ?>" >Delete</button>
 </td>
+<td><?php echo e($post->slug); ?></td>
 <?php endforeach; $__env->popLoop(); $loop = $__env->getLastLoop(); ?>
   </tbody>
 </table>

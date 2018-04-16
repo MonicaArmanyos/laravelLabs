@@ -24,6 +24,7 @@
       <th scope="col">Posted by</th>
       <th scope="col">Created at</th>
       <th scope="col">Actions</th>
+      <th scope="col">Slug</th>
     </tr>
   </thead>
   <tbody>
@@ -39,6 +40,7 @@
     <button type="button" class="btn btn-primary" onclick="location.href='{{route('posts.edit',['post' =>$post->id])}}'">Edit</button>
     <button type="button" class="btn btn-danger delete"  targ="{{$post->id}}" >Delete</button>
 </td>
+<td>{{ $post->slug }}</td>
 @endforeach
   </tbody>
 </table>
