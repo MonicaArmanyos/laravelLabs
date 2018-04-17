@@ -8,7 +8,7 @@
                 <div class="panel-heading">Login</div>
 
                 <div class="panel-body">
-                    <form class="form-horizontal" method="POST" action="{{ route('login') }}">
+                    <form class="form-horizontal" method="POST" action="{{ route('login') }}" id="loginForm">
                         {{ csrf_field() }}
 
                         <div class="form-group{{ $errors->has('email') ? ' has-error' : '' }}">
@@ -53,6 +53,9 @@
                             <div class="col-md-8 col-md-offset-4">
                                 <button type="submit" class="btn btn-primary">
                                     Login
+                                </button>
+                                <button type="submit" class="btn btn-primary" id="github" onclick="location.href='/login/github'">
+                                    Login with github 
                                 </button>
 
                                 <a class="btn btn-link" href="{{ route('password.request') }}">

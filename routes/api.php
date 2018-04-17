@@ -16,3 +16,7 @@ use Illuminate\Http\Request;
 Route::middleware('auth:api')->get('/user', function (Request $request) {
     return $request->user();
 });
+Route::get('posts','Api\PostsController@index')
+->middleware('auth:api');// el authentication y5lih m7tag passport package
+
+Route::post('posts','Api\PostsController@store')->middleware('auth:api');;
