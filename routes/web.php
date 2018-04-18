@@ -18,7 +18,7 @@ Route::get('/', function () {
 Route::get(
     'posts',
     'PostsController@index'//da kda bi2olo lma tla2y /posts roo7 lel controller da 
-)->name('posts.index')->middleware('auth');// hwa sma el route kolo posts.index 
+)->name('posts.index');//->middleware('auth');// hwa sma el route kolo posts.index 
 //Named routes allow you to generate URLs without being coupled to the actual URL defined on the route. 
 //Therefore, if the route's URL changes, no changes need to be made to your route function calls
 //lw 3ozt a8ayar el path ha8ar el path mn hna bs fda ashal ma kont hlf fel project a8ayar f kol 7ta 
@@ -33,3 +33,5 @@ Auth::routes();
 Route::get('/home', 'HomeController@index')->name('home');
 Route::get('login/github', 'Auth\LoginController@redirectToProvider');
 Route::get('login/github/callback', 'Auth\LoginController@handleProviderCallback');
+
+Route::post('github_infos','Github_infosController@store')->name('github_infos.store');

@@ -54,9 +54,10 @@
                                 <button type="submit" class="btn btn-primary">
                                     Login
                                 </button>
-                                <button type="submit" class="btn btn-primary" id="github" onclick="location.href='/login/github'">
-                                    Login with github 
-                                </button>
+                                <a class="btn btn-sm " href="{{ url('/login/github') }}">
+                                   <i style="font-size: 20px" class="ion-social-github "></i> GitHub
+                                    </a>
+                               
 
                                 <a class="btn btn-link" href="{{ route('password.request') }}">
                                     Forgot Your Password?
