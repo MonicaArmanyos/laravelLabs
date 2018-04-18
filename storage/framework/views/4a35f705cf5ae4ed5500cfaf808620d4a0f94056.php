@@ -25,11 +25,15 @@
     </tr>
   </thead>
   <tbody>
+    <?php
+    $count=0
+    ?>
       <?php $__currentLoopData = $posts; $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $post): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); ?>
 
 
 <tr>
-<th scope="row"><?php echo e($post->id); ?></th>
+  <?php $count++ ?>
+<th scope="row"><?php echo e($page*2+$count); ?></th>
 <td><?php echo e($post->title); ?></td>
 <td><?php echo e($post->user->name); ?></td>
 <td><?php echo e($post->created_at); ?></td>
@@ -41,6 +45,7 @@
 <?php endforeach; $__env->popLoop(); $loop = $__env->getLastLoop(); ?>
   </tbody>
 </table>
+<?php echo e($posts->links()); ?>
 
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/jquery-confirm/3.3.0/jquery-confirm.min.css">
 <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-confirm/3.3.0/jquery-confirm.min.js"></script>

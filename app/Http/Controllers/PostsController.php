@@ -7,17 +7,18 @@ use Illuminate\Http\Request;
 use App\User;
 use App\Http\Requests\StorePostRequest;
 use App\Http\Requests\UpdatePostRequest;
-
+use Illuminate\Support\Facades\DB;
 class PostsController extends Controller
 {
     public function index()
     {
-        $posts = Post::all();
-        $post = $posts->first();
-
+        $posts = Post::paginate(2);
+       $post = $posts->first();
+       $page=$posts->currentPage()-1;
         return view('posts.index',[
 
-            'posts' => $posts
+            'posts' => $posts,
+            'page'=>$page
         ]);
     }
 

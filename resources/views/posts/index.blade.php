@@ -28,11 +28,15 @@
     </tr>
   </thead>
   <tbody>
+    @php
+    $count=0
+    @endphp
       @foreach ($posts as $post)
 
 
 <tr>
-<th scope="row">{{ $post->id }}</th>
+  @php $count++ @endphp
+<th scope="row">{{ $page*2+$count}}</th>
 <td>{{ $post->title }}</td>
 <td>{{$post->user->name}}</td>
 <td>{{ $post->created_at }}</td>
@@ -44,7 +48,7 @@
 @endforeach
   </tbody>
 </table>
-
+{{$posts->links()}}
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/jquery-confirm/3.3.0/jquery-confirm.min.css">
 <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-confirm/3.3.0/jquery-confirm.min.js"></script>
 <script src="{{ asset('js/warn.js') }}"></script>
